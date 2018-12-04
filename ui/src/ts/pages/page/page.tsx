@@ -21,15 +21,27 @@ const styles = ({palette}: Theme) => createStyles({
         marginBottom: "2em",
     },
 
+    footer: {
+        marginTop: "5em",
+    },
+
     contentClass: {
         flex: 1,
         marginLeft: "10%",
         marginRight: "10%",
     },
-    '@media (max-width: 960px)': {
+
+    '@media (max-width: 800px)': {
         contentClass: {
             marginLeft: "0%",
             marginRight: "0%",
+        },
+    },
+
+    '@media (min-width: 1400px)': {
+        contentClass: {
+            marginLeft: "15%",
+            marginRight: "15%",
         },
     },
 
@@ -65,7 +77,7 @@ class Page extends React.Component<IPageProps> {
                         }
                     </div>
 
-                    <Footer />
+                    <Footer className={this.props.classes.footer}/>
                 </div>
             </>
         )
