@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
 
-const styles = ({palette}: Theme) => createStyles({
+const styles = ({}: Theme) => createStyles({
     root: {
         position: 'sticky',
         width: '100%',
@@ -13,6 +13,7 @@ const styles = ({palette}: Theme) => createStyles({
         top: '0px',
         right: '0px'
     },
+
     appBar: {
         paddingTop: "0.5em",
         paddingBottom: "0.5em",
@@ -26,7 +27,7 @@ interface IHeaderProps {
 class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDivElement>> {
     render() {
         return (
-            <div className={this.props.classes.root}>
+            <div className={`${this.props.classes.root} ${this.props.className}`}>
                 <AppBar position="static" className={this.props.classes.appBar}>
                     <Toolbar>
                         <Typography variant="h4" color="inherit">

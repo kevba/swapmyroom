@@ -1,24 +1,33 @@
 import * as React from 'react'
 
-import Paper from '@material-ui/core/Paper';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
 
 import {map} from 'lodash'
 
 import Header from './header'
 import Footer from './footer'
+import BackgroundImage from './backgroundImage';
 
 const styles = ({palette}: Theme) => createStyles({
     page: {
         display: "flex",
         flexDirection: "column",
         minHeight: "100%",
-        backgroundColor: palette.primary.light
+        backgroundColor: palette.background.default
     },
 
     header: {
         flex: 1,
-        marginBottom: "2em",
+        paddingBottom: '5em'
+    },
+
+    backgroundImage: {
+        flex: 1,
+        position: 'absolute',
+        width: '100%',
+        zIndex: 1,
+        top: '0px',
+        right: '0px'
     },
 
     footer: {
@@ -27,6 +36,7 @@ const styles = ({palette}: Theme) => createStyles({
 
     contentClass: {
         flex: 1,
+        zIndex: 2,
         marginLeft: "10%",
         marginRight: "10%",
     },
@@ -46,15 +56,15 @@ const styles = ({palette}: Theme) => createStyles({
     },
 
     contentItem: {
-        marginBottom: "0.5em",
-        marginTop: "0.5em",
-        padding: "0.5em 1em 1em 1em",
+        marginBottom: "0em",
+        marginTop: "0em",
     }
 });
 
 interface IPageProps {
     classes: any;
     children: any[];
+    backgroundImg?: string;
 }
 
 class Page extends React.Component<IPageProps> {
@@ -63,15 +73,14 @@ class Page extends React.Component<IPageProps> {
             <>
                 <div className={this.props.classes.page}>
                     <Header className={this.props.classes.header}/>
-                    {/* TODO: banner image layer */}
-
+                    <BackgroundImage imagePath={this.props.backgroundImg} className={this.props.classes.backgroundImage}/>
                     <div className={this.props.classes.contentClass}>
                         {
                             map(this.props.children, (child) => {
                                 return (
-                                    <Paper className={this.props.classes.contentItem}>
+                                    <div className={this.props.classes.contentItem}>
                                         {child}
-                                    </Paper>
+                                    </div>
                                 )
                             })
                         }
