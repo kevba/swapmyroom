@@ -1,27 +1,35 @@
 import * as React from 'react';
 
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 
-import BaseInput from '../forms/baseInput';
+import {BaseInput, IBaseInputProps, IBaseInputState} from './baseInput';
 
-class FormInput extends BaseInput {
+interface IFormInputProps extends IBaseInputProps{
+    label: string
+    type?: string
+}
+
+interface IFormInputState extends IBaseInputState {}
+
+class FormInput extends BaseInput<IFormInputProps, IFormInputState> {
     render() {
         let {id, label, type} = this.props;
         let {errorText, value} = this.state;
 
         let error = (errorText !== '');
-        if (error) {
-            label = errorText;
-        }
 
         return (
             <div>
                 <TextField
+                    fullWidth
                     id={id}
-                    error={error}
                     label={label}
                     value={value}
+                    helperText={errorText || " "}
                     type={type}
+                    FormHelperTextProps={{
+                        error: error
+                    }}
                     onChange={e => this.handleChange(e.target.value)}
                     margin="normal" />
             </div>

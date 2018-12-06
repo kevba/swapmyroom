@@ -68,3 +68,18 @@ export const integer = () => {
 
     return vfunc
 };
+
+export const email = () => {
+    let text = 'Not a valid email address';
+
+    let vfunc: Validator = (value: any) => {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (re.test(String(value).toLowerCase())) {
+            return {valid: true, text: ''};
+        }
+        return {valid: false, text: text};
+    };
+
+    return vfunc
+};

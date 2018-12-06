@@ -5,7 +5,7 @@ import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
 const styles = ({palette}: Theme) => createStyles({
   root: {
     backgroundColor: palette.grey[900],
-    color: palette.text.primary,
+    color: palette.grey[400],
     padding: "1em 5em 2em",
   },
 });

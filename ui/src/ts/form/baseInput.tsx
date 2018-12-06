@@ -1,33 +1,38 @@
 import * as React from 'react';
 import {Validator} from './validation/validations';
 
+export interface IFormInput {
+    onValidate: (k: any, v: any) => void
+    onChange: (k: any, v: any) => void
+}
+
 export interface IBaseInputProps {
     defaultValue: string | number;
     rules: Validator[];
-    id: number | string;
+    id: string;
     onChange: (id: string | number, v: any) => void;
     onValidate: (id: string | number, v: any) => void;
 }
 
-interface IBaseInputState {
+export interface IBaseInputState {
     value: string | number;
     errorText: string;
 }
 
-class BaseInput extends React.Component<IBaseInputProps, IBaseInputState> {
+export class BaseInput<P extends IBaseInputProps, S extends IBaseInputState> extends React.Component<P, S> {
     static defaultProps = {
         rules: new Array<Validator>(),
         onChange: (id: string | number, v: any) => {return},
         onValidate: (id: string | number, v: any) => {return},
     };
 
-    constructor(props: IBaseInputProps) {
+    constructor(props: P) {
         super(props);
 
-        this.state = {
+        this.setState({
+            value: this.props.defaultValue,
             errorText: '',
-            value: this.props.defaultValue
-        };
+        });
     }
 
     componentWillMount() {

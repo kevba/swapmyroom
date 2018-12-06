@@ -4,15 +4,24 @@ import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
 import Page from '../page/page';
 import Paper from '@material-ui/core/Paper';
 
+import UserForm from './userForm'
+
 const styles = ({}: Theme) => createStyles({
     header: {
         textAlign: "center",
     },
 
     contentbody: {
-        padding: "0.5em 1em 1em 1em",
+        padding: "1.5em 1em 1em 1.5em",
         // All items are big, mostly for demo purposes
         minHeight: "40vh",
+        textAlign: "center",
+    },
+
+    formWrapper: {
+        width: "100%",
+        maxWidth: "30em",
+        display: "inline-block"
     },
 
     // Must always be at least 40vh high
@@ -34,7 +43,7 @@ export class IndexPage extends React.Component<IIndexPageProps> {
                 <>
                     <Paper className={`${classes.contentbody} ${classes.firstItem}`}>
                         <div className={classes.header}>
-                            <h1> Welkom </h1>
+                            <h1> Hello there </h1>
                         </div>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                         sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -61,12 +70,15 @@ export class IndexPage extends React.Component<IIndexPageProps> {
                 </>
                 <>
                     <div className={classes.header}>
-                        <h1> Ik wil ruilen! </h1>
+                        <h1> I want to swap! </h1>
                     </div>
                     <Paper className={classes.contentbody}>
-                        erg leuk, vul even je eigen gegevens in en je voorkeuren voor een kamer.
-
-
+                        <div>
+                            Great! just a few things to fill in
+                        </div>
+                        <div className={classes.formWrapper}>
+                            <UserForm />
+                        </div>
                     </Paper>
                 </>
             </Page>
