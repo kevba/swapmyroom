@@ -3,7 +3,8 @@ import * as React from 'react';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
-// import StepContent from '@material-ui/core/StepContent';
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 import Button from '@material-ui/core/Button';
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
 
@@ -82,11 +83,16 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
                         handleSubmit={(data) => this.handleSubmit(data)}
                         handleOnValidate={(valid) => this.handleOnValidate(valid)}
                         showButton={false}>
+
+                        {/* First page of the form */}
                         <FormInput
                             className={this.state.activeStep !== 0 ? classes.hiddenContent : ""}
                             id="rent"
                             defaultValue=""
                             label="Rent"
+                            inputProps={{
+                                startAdornment: <InputAdornment position="start">€</InputAdornment>
+                            }}
                             rules={[required()]} />
                         <FormInput
                             className={this.state.activeStep !== 0 ? classes.hiddenContent : ""}
@@ -101,17 +107,23 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
                             label="other things"
                             rules={[required()]} />
 
+                        {/* Second page of the form */}
                         <FormInput
                             className={this.state.activeStep !== 1 ? classes.hiddenContent : ""}
                             id="rent"
                             defaultValue=""
-                            label="Rent"
+                            label="My Rent"
+                            type="number"
+                            inputProps={{
+                                startAdornment: <InputAdornment position="start">€</InputAdornment>
+                            }}
                             rules={[required()]} />
                         <FormInput
                             className={this.state.activeStep !== 1 ? classes.hiddenContent : ""}
                             id="roomMates"
                             defaultValue=""
-                            label="Maximum roommates"
+                            type="number"
+                            label="Amount of roommates"
                             rules={[required(), integer()]} />
                         <FormInput
                             className={this.state.activeStep !== 1 ? classes.hiddenContent : ""}
@@ -120,24 +132,24 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
                             label="other things"
                             rules={[required()]} />
 
-
+                        {/* Third and last page of the form */}
                         <FormInput
                             className={this.state.activeStep !== 2 ? classes.hiddenContent : ""}
-                            id="rent"
+                            id="email"
                             defaultValue=""
-                            label="Rent"
+                            label="Email"
+                            rules={[required(), email()]} />
+                        <FormInput
+                            className={this.state.activeStep !== 2 ? classes.hiddenContent : ""}
+                            id="firstName"
+                            defaultValue=""
+                            label="First name"
                             rules={[required()]} />
                         <FormInput
                             className={this.state.activeStep !== 2 ? classes.hiddenContent : ""}
-                            id="roomMates"
-                            defaultValue=""
-                            label="Maximum roommates"
-                            rules={[required(), integer()]} />
-                        <FormInput
-                            className={this.state.activeStep !== 2 ? classes.hiddenContent : ""}
-                            id=""
-                            defaultValue=""
-                            label=""
+                            id="lastName"
+                            defaultValue="aaa"
+                            label="Last name"
                             rules={[required()]} />
                     </Form>
                 </div>
