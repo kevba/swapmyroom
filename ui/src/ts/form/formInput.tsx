@@ -7,6 +7,7 @@ import {BaseInput, IBaseInputProps, IBaseInputState} from './baseInput';
 interface IFormInputProps extends IBaseInputProps{
     label: string
     type?: string
+    className?: string
 }
 
 interface IFormInputState extends IBaseInputState {}
@@ -21,6 +22,7 @@ class FormInput extends BaseInput<IFormInputProps, IFormInputState> {
         return (
             <div>
                 <TextField
+                    className={this.props.className}
                     fullWidth
                     id={id}
                     label={label}

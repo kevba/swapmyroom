@@ -1,10 +1,12 @@
 import * as React from 'react';
 
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
-import Page from '../page/page';
 import Paper from '@material-ui/core/Paper';
 
-import UserForm from './userForm'
+import Page from '../page/page';
+import {backGroundImgHeight} from '../page/backgroundImage'
+import StepperForm from './formStepper'
+
 
 const styles = ({}: Theme) => createStyles({
     header: {
@@ -12,7 +14,7 @@ const styles = ({}: Theme) => createStyles({
     },
 
     contentbody: {
-        padding: "1.5em 1em 1em 1.5em",
+        padding: "20px",
         // All items are big, mostly for demo purposes
         minHeight: "40vh",
         textAlign: "center",
@@ -24,9 +26,9 @@ const styles = ({}: Theme) => createStyles({
         display: "inline-block"
     },
 
-    // Must always be at least 40vh high
+    // Must always be at least as tall as the background image
     firstItem: {
-        minHeight: "40vh",
+        minHeight: backGroundImgHeight,
     },
 
 });
@@ -77,7 +79,7 @@ export class IndexPage extends React.Component<IIndexPageProps> {
                             Great! just a few things to fill in
                         </div>
                         <div className={classes.formWrapper}>
-                            <UserForm />
+                            <StepperForm />
                         </div>
                     </Paper>
                 </>

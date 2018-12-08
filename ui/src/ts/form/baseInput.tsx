@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Validator} from './validation/validations';
 
-export interface IFormInput {
+export interface IBaseInput {
     onValidate: (k: any, v: any) => void
     onChange: (k: any, v: any) => void
 }
@@ -28,11 +28,6 @@ export class BaseInput<P extends IBaseInputProps, S extends IBaseInputState> ext
 
     constructor(props: P) {
         super(props);
-
-        this.setState({
-            value: this.props.defaultValue,
-            errorText: '',
-        });
     }
 
     componentWillMount() {

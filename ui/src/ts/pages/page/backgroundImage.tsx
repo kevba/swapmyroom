@@ -3,12 +3,13 @@ import * as React from 'react'
 import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
 
 const img = '/images/bgImage.jpg';
+export const backGroundImgHeight = "50vh";
 
 const styles = ({palette}: Theme) => createStyles({
     root: {
         backgroundColor: palette.primary.dark,
-        height:'40vh',
-        maxHeight:'40vh'
+        height:backGroundImgHeight,
+        maxHeight:backGroundImgHeight
     },
     imageSize: {
         width: '100%',

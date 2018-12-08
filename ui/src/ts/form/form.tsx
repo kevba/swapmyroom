@@ -2,15 +2,18 @@ import * as React from 'react';
 import {every} from 'lodash';
 
 import Button from '@material-ui/core/Button';
-import {IFormInput} from './baseInput'
+import {IBaseInput} from './baseInput'
 
 export type SubmitCallback = (values: any) => void
+export type OnValidCallback = (valid: boolean) => void
 
 interface IFormProps {
     handleSubmit: SubmitCallback
-    children: React.ReactElement<IFormInput>[]
+    handleOnValidate: SubmitCallback
+    children: React.ReactElement<IBaseInput>[]
     button: React.ReactElement<any>
     disableButton: boolean
+    showButton: boolean
 }
 
 interface IFormState {
@@ -21,8 +24,10 @@ interface IFormState {
 class Form extends React.Component<IFormProps, IFormState> {
     static defaultProps = {
         handleSubmit: (values: any) => { return },
-        button: <Button variant="raised"> {'Submit'}</Button>,
-        disableButton: false
+        handleOnValidate: (valid: boolean) => { return },
+        button: <Button variant="contained"> {'Submit'}</Button>,
+        disableButton: false,
+        showButton: true
     };
 
     constructor(props: IFormProps) {
@@ -39,9 +44,10 @@ class Form extends React.Component<IFormProps, IFormState> {
         handleSubmit(this.state.values);
     }
 
-    isFormValid() {
+    isFormValid(): boolean {
         let {validation} = this.state;
-        return every(validation, v => (v));
+        let valid = every(validation, v => (v));
+        return valid
     }
 
     handleChange(k: string | number, v: any) {
@@ -53,7 +59,10 @@ class Form extends React.Component<IFormProps, IFormState> {
     handleValidation(k: string | number, v: any) {
         let {validation} = this.state;
         validation[k] = v;
-        this.setState({validation: validation});
+        this.setState({validation: validation},
+            () => this.props.handleOnValidate(this.isFormValid())
+        );
+
     }
 
     render() {
@@ -70,25 +79,25 @@ class Form extends React.Component<IFormProps, IFormState> {
     renderFormComponents() {
         let {children} = this.props;
 
-        return React.Children.map(children, (child: React.ReactElement<IFormInput>)  =>
-            React.cloneElement(
-                child, {
-                    onValidate: (k: any, v: any) => this.handleValidation(k, v),
-                    onChange: (k: any, v: any) => this.handleChange(k, v)
-                }
-            )
-        );
+        return React.Children.map(children, (child: React.ReactElement<IBaseInput>)  => (
+            React.cloneElement(child, {
+                onValidate: (k: any, v: any) => this.handleValidation(k, v),
+                onChange: (k: any, v: any) => this.handleChange(k, v)
+            })
+        ))
     }
 
     renderButton() {
         let {button, disableButton} = this.props;
-        return React.cloneElement(
-            button,
-            {
-                disabled: !this.isFormValid() || disableButton,
-                onClick: () => this.onSubmit(),
-            }
-        );
+        if (this.props.showButton) {
+            return React.cloneElement(
+                button,
+                {
+                    disabled: !this.isFormValid() || disableButton,
+                    onClick: () => this.onSubmit(),
+                }
+            );
+        }
     }
 }
 

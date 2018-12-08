@@ -18,7 +18,7 @@ const styles = ({palette}: Theme) => createStyles({
 
     header: {
         flex: 1,
-        paddingBottom: '5em'
+        paddingBottom: '15px'
     },
 
     backgroundImage: {
@@ -43,8 +43,8 @@ const styles = ({palette}: Theme) => createStyles({
 
     '@media (max-width: 800px)': {
         contentClass: {
-            marginLeft: "0%",
-            marginRight: "0%",
+            marginLeft: "5%",
+            marginRight: "5%",
         },
     },
 
