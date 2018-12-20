@@ -1,14 +1,14 @@
 import * as React from 'react'
 
-import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
+import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-import {map} from 'lodash'
+import { map } from 'lodash'
 
 import Header from './header'
 import Footer from './footer'
 import BackgroundImage from './backgroundImage';
 
-const styles = ({palette}: Theme) => createStyles({
+const styles = ({ palette }: Theme) => createStyles({
     page: {
         display: "flex",
         flexDirection: "column",
@@ -72,8 +72,8 @@ class Page extends React.Component<IPageProps> {
         return (
             <>
                 <div className={this.props.classes.page}>
-                    <Header className={this.props.classes.header}/>
-                    <BackgroundImage imagePath={this.props.backgroundImg} className={this.props.classes.backgroundImage}/>
+                    <Header className={this.props.classes.header} />
+                    <BackgroundImage imagePath={this.props.backgroundImg} className={this.props.classes.backgroundImage} />
                     <div className={this.props.classes.contentClass}>
                         {
                             map(this.props.children, (child) => {
@@ -86,7 +86,7 @@ class Page extends React.Component<IPageProps> {
                         }
                     </div>
 
-                    <Footer className={this.props.classes.footer}/>
+                    <Footer className={this.props.classes.footer} />
                 </div>
             </>
         )

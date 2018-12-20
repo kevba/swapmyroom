@@ -1,14 +1,14 @@
 import * as React from 'react';
 
-import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
+import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 
 import Page from '../page/page';
-import {backGroundImgHeight} from '../page/backgroundImage'
+import { backGroundImgHeight } from '../page/backgroundImage'
 import StepperForm from './formStepper'
 
 
-const styles = ({}: Theme) => createStyles({
+const styles = ({ mixins }: Theme) => createStyles({
     header: {
         textAlign: "center",
     },
@@ -31,6 +31,12 @@ const styles = ({}: Theme) => createStyles({
         minHeight: backGroundImgHeight,
     },
 
+    anchor: {
+        position: "absolute",
+        marginTop: "-80px",
+        visibility: "hidden",
+        display: "block",
+    }
 });
 
 interface IIndexPageProps {
@@ -39,7 +45,7 @@ interface IIndexPageProps {
 
 export class IndexPage extends React.Component<IIndexPageProps> {
     render() {
-        let {classes} = this.props;
+        let { classes } = this.props;
         return (
             <Page>
                 <>
@@ -58,7 +64,8 @@ export class IndexPage extends React.Component<IIndexPageProps> {
                 </>
                 <>
                     <div className={classes.header}>
-                        <h1> test 2 </h1>
+                        <a id="about" className={classes.anchor}></a>
+                        <h1> About us </h1>
                     </div>
                     <Paper className={classes.contentbody}>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit,

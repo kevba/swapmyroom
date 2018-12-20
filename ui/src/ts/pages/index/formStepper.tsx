@@ -6,16 +6,23 @@ import StepLabel from '@material-ui/core/StepLabel';
 import InputAdornment from '@material-ui/core/InputAdornment';
 
 import Button from '@material-ui/core/Button';
-import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
+import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 import Form from '../../form/form';
 import FormInput from '../../form/formInput';
 
-import {required, integer, email} from '../../form/validation/validations';
+import { required, integer, email } from '../../form/validation/validations';
 
-const styles = ({}: Theme) => createStyles({
+const styles = ({ palette }: Theme) => createStyles({
     hiddenContent: {
         display: "none",
+    },
+    noteText: {
+        color: palette.text.disabled,
+        textAlign: "left"
+    },
+    formButtons: {
+        paddingTop: "10px",
     }
 })
 
@@ -67,11 +74,11 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
     }
 
     render() {
-        let {classes} = this.props
+        let { classes } = this.props
         return (
             <div>
                 <Stepper activeStep={this.state.activeStep} >
-                    {this.state.steps.map((s, i) =>(
+                    {this.state.steps.map((s, i) => (
                         <Step key={i}>
                             <StepLabel key={i}>{s}</StepLabel>
                         </Step>
@@ -89,7 +96,9 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
                             className={this.state.activeStep !== 0 ? classes.hiddenContent : ""}
                             id="rent"
                             defaultValue=""
-                            label="Rent"
+                            label="Rent*"
+                            type="number"
+                            placeholder="maximum amout of rent you're willing to pay"
                             inputProps={{
                                 startAdornment: <InputAdornment position="start">€</InputAdornment>
                             }}
@@ -148,12 +157,15 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
                         <FormInput
                             className={this.state.activeStep !== 2 ? classes.hiddenContent : ""}
                             id="lastName"
-                            defaultValue="aaa"
+                            defaultValue=""
                             label="Last name"
                             rules={[required()]} />
                     </Form>
+                    <div className={`${classes.noteText} ${this.state.activeStep !== 0 ? classes.hiddenContent : ""}`}>
+                        <span>*Inclusive service charges </span>
+                    </div>
                 </div>
-                <div>
+                <div className={classes.formButtons}>
                     {this.renderBack()}
                     {this.renderNext()}
                     {this.renderSubmit()}
@@ -177,7 +189,7 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
     }
 
     renderNext(): React.ReactNode {
-        if (this.state.activeStep > this.state.steps.length-2) {
+        if (this.state.activeStep > this.state.steps.length - 2) {
             return (<></>)
         }
 
@@ -191,7 +203,7 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
     }
 
     renderSubmit(): React.ReactNode {
-        if (this.state.activeStep < this.state.steps.length-1) {
+        if (this.state.activeStep < this.state.steps.length - 1) {
             return (<></>)
         }
 
