@@ -2,11 +2,19 @@ import * as React from 'react'
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import Button, {ButtonProps} from '@material-ui/core/Button';
+
+import {map} from 'lodash';
 
 import Typography from '@material-ui/core/Typography';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 
+export interface INavButton  {
+    href: string
+    text: string
+    variant?: ButtonProps["variant"]
+    color?: ButtonProps["color"]
+}
 
 const styles = ({ }: Theme) => createStyles({
     root: {
@@ -37,6 +45,7 @@ const styles = ({ }: Theme) => createStyles({
 
 interface IHeaderProps {
     classes: any;
+    navButtons?: INavButton[];
 }
 
 class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDivElement>> {
@@ -59,17 +68,22 @@ class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDiv
     }
 
     renderNavButtons() {
+        let {navButtons} = this.props
+        if (navButtons == undefined) {
+            return
+        }
         return (
             <>
-                <Button
-                    href={"#about"}
-                    variant={"contained"}>
-                    {'About us`'}
-                </Button>
-                <Button
-                    variant={"contained"}>
-                    {'Our mission`'}
-                </Button>
+                {
+                    map(navButtons, (b)  => (
+                        <Button
+                            href={b.href}
+                            color={b.color || "secondary"}
+                            variant={b.variant || "outlined" }>
+                            {b.text}
+                        </Button>
+                    ))
+                }
             </>
         )
     }

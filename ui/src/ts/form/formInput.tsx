@@ -39,7 +39,6 @@ class FormInput extends BaseInput<IFormInputProps, IFormInputState> {
         }
 
         if (placeholder != undefined && placeholder != "") {
-            console.log(placeholder)
             formLabelClasses["root"] = classes.labelRoot
         }
 

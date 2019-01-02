@@ -22,8 +22,8 @@ export interface IBaseInputState {
 export class BaseInput<P extends IBaseInputProps, S extends IBaseInputState> extends React.Component<P, S> {
     static defaultProps = {
         rules: new Array<Validator>(),
-        onChange: (id: string | number, v: any) => {return},
-        onValidate: (id: string | number, v: any) => {return},
+        onChange: () => {return},
+        onValidate: () => {return},
     };
 
     constructor(props: P) {

@@ -1,98 +1,31 @@
 import * as React from 'react';
 
-import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
 
 import Page from '../page/page';
-import { backGroundImgHeight } from '../page/backgroundImage'
-import StepperForm from './formStepper'
 
+import Welcome from './parts/welcome'
+import About from './parts/about'
+import Mission from './parts/mission'
+import Form from './parts/form'
 
-const styles = ({ mixins }: Theme) => createStyles({
-    header: {
-        textAlign: "center",
-    },
-
-    contentbody: {
-        padding: "20px",
-        // All items are big, mostly for demo purposes
-        minHeight: "40vh",
-        textAlign: "center",
-    },
-
-    formWrapper: {
-        width: "100%",
-        maxWidth: "30em",
-        display: "inline-block"
-    },
-
-    // Must always be at least as tall as the background image
-    firstItem: {
-        minHeight: backGroundImgHeight,
-    },
-
-    anchor: {
-        position: "absolute",
-        marginTop: "-80px",
-        visibility: "hidden",
-        display: "block",
-    }
-});
-
-interface IIndexPageProps {
-    classes: any;
-}
+interface IIndexPageProps {}
 
 export class IndexPage extends React.Component<IIndexPageProps> {
     render() {
-        let { classes } = this.props;
+        let navButtons = [
+            {href: "#about_us", text: "About"},
+            {href: "#our_mission", text: "Our mission"}
+        ]
+
         return (
-            <Page>
-                <>
-                    <Paper className={`${classes.contentbody} ${classes.firstItem}`}>
-                        <div className={classes.header}>
-                            <h1> Hello there </h1>
-                        </div>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.
-                    </Paper>
-                </>
-                <>
-                    <div className={classes.header}>
-                        <a id="about" className={classes.anchor}></a>
-                        <h1> About us </h1>
-                    </div>
-                    <Paper className={classes.contentbody}>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                        nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                        in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                        mollit anim id est laborum.
-                    </Paper>
-                </>
-                <>
-                    <div className={classes.header}>
-                        <h1> I want to swap! </h1>
-                    </div>
-                    <Paper className={classes.contentbody}>
-                        <div>
-                            Great! just a few things to fill in
-                        </div>
-                        <div className={classes.formWrapper}>
-                            <StepperForm />
-                        </div>
-                    </Paper>
-                </>
+            <Page navButtons={navButtons}>
+                <Welcome />
+                <About />
+                <Mission />
+                <Form />
             </Page>
         );
     }
 };
 
-export default withStyles(styles)(IndexPage);
+export default (IndexPage);

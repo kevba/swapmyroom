@@ -8,7 +8,6 @@ export const required = () => {
 
     let vfunc: Validator = (value: any) => {
         if (value === '' || value === undefined || value === null) {
-            console.log(value)
             return {valid: false, text: text};
         }
         return {valid: true, text: ''};

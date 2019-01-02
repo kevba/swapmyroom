@@ -23,8 +23,8 @@ interface IFormState {
 
 class Form extends React.Component<IFormProps, IFormState> {
     static defaultProps = {
-        handleSubmit: (values: any) => { return },
-        handleOnValidate: (valid: boolean) => { return },
+        handleSubmit: () => { return },
+        handleOnValidate: () => { return },
         button: <Button variant="contained"> {'Submit'}</Button>,
         disableButton: false,
         showButton: true

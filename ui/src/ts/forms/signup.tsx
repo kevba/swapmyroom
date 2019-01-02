@@ -8,10 +8,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Button from '@material-ui/core/Button';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 
-import Form from '../../form/form';
-import FormInput from '../../form/formInput';
+import Form from '../form/form';
+import FormInput from '../form/formInput';
 
-import { required, integer, email } from '../../form/validation/validations';
+import { required, integer, email } from '../form/validation/validations';
 
 const styles = ({ palette }: Theme) => createStyles({
     hiddenContent: {
@@ -87,8 +87,8 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
                 <div>
                     <Form
                         ref={this.submitRef}
-                        handleSubmit={(data) => this.handleSubmit(data)}
-                        handleOnValidate={(valid) => this.handleOnValidate(valid)}
+                        handleSubmit={(data: any) => this.handleSubmit(data)}
+                        handleOnValidate={(valid: any) => this.handleOnValidate(valid)}
                         showButton={false}>
 
                         {/* First page of the form */}

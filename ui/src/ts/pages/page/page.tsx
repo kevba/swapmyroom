@@ -4,7 +4,7 @@ import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 
 import { map } from 'lodash'
 
-import Header from './header'
+import Header, {INavButton} from './header'
 import Footer from './footer'
 import BackgroundImage from './backgroundImage';
 
@@ -65,14 +65,19 @@ interface IPageProps {
     classes: any;
     children: any[];
     backgroundImg?: string;
+    navButtons: INavButton[];
 }
 
 class Page extends React.Component<IPageProps> {
+    static defaultProps = {
+        navButtons: new Array<INavButton>(),
+    };
+
     render() {
         return (
             <>
                 <div className={this.props.classes.page}>
-                    <Header className={this.props.classes.header} />
+                    <Header className={this.props.classes.header} navButtons={this.props.navButtons} />
                     <BackgroundImage imagePath={this.props.backgroundImg} className={this.props.classes.backgroundImage} />
                     <div className={this.props.classes.contentClass}>
                         {
