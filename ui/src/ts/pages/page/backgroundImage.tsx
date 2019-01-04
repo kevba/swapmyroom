@@ -7,12 +7,16 @@ export const backGroundImgHeight = "50vh";
 
 const styles = ({palette}: Theme) => createStyles({
     root: {
-        backgroundColor: palette.primary.dark,
-        height:backGroundImgHeight,
-        maxHeight:backGroundImgHeight
-    },
-    imageSize: {
         width: '100%',
+        position: 'absolute',
+        top: '0px',
+        right: '0px',
+    },
+    image: {
+        height:backGroundImgHeight,
+        width: 'auto',
+        maxHeight:backGroundImgHeight,
+        zIndex: 1,
         overflow: "hidden"
     }
 });
@@ -25,8 +29,10 @@ interface IBackgroundImageProps {
 export class BackgroundImage extends React.Component<IBackgroundImageProps & React.HTMLAttributes<HTMLDivElement>> {
     render() {
         return (
-            <div className={`${this.props.classes.root} ${this.props.classes.imageSize} ${this.props.className}`}>
-                <img className={this.props.classes.imageSize} src={this.props.imagePath || img} />
+            <div className={`${this.props.classes.root}`}>
+                <img
+                    className={`${this.props.classes.image}`}
+                    src={this.props.imagePath || img} />
             </div>
         )
     }

@@ -21,14 +21,14 @@ const styles = ({ palette }: Theme) => createStyles({
         paddingBottom: '15px'
     },
 
-    backgroundImage: {
-        flex: 1,
-        position: 'absolute',
-        width: '100%',
-        zIndex: 1,
-        top: '0px',
-        right: '0px'
-    },
+    // backgroundImage: {
+    //     flex: 1,
+    //     position: 'absolute',
+    //     width: '100%',
+    //     zIndex: 1,
+    //     top: '0px',
+    //     right: '0px'
+    // },
 
     footer: {
         marginTop: "5em",
@@ -78,7 +78,7 @@ class Page extends React.Component<IPageProps> {
             <>
                 <div className={this.props.classes.page}>
                     <Header className={this.props.classes.header} navButtons={this.props.navButtons} />
-                    <BackgroundImage imagePath={this.props.backgroundImg} className={this.props.classes.backgroundImage} />
+                    <BackgroundImage imagePath={this.props.backgroundImg} />
                     <div className={this.props.classes.contentClass}>
                         {
                             map(this.props.children, (child) => {
