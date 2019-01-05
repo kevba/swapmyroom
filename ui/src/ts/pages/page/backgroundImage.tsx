@@ -11,6 +11,7 @@ const styles = ({palette}: Theme) => createStyles({
         position: 'absolute',
         top: '0px',
         right: '0px',
+        overflow: "hidden"
     },
     image: {
         height:backGroundImgHeight,

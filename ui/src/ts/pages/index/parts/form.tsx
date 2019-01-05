@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { withStyles, createStyles } from '@material-ui/core/styles';
 
-import SignupForm from '../../../forms/signup'
+import SignupForm from '../../../forms/signup/signup'
 
 import PartHeader from './part/partHeader'
 import PartBody from './part/partBody'
