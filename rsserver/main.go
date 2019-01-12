@@ -4,7 +4,8 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"roomswap/core"
+
+	"github.com/kevba/swapmyroom/core"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"
@@ -26,9 +27,12 @@ func main() {
 		log.Fatalf("could not connect to database: %v", err)
 	}
 	m := core.NewManager(db)
-	router := gin.Default()
+	engine := gin.Default()
+
+	router := engine.Group("/api")
 	UserRouter(router, m)
 	RoomRouter(router, m)
+	UserRoomRouter(router, m)
 
-	router.Run(fmt.Sprintf(":%v", *port))
+	engine.Run(fmt.Sprintf(":%v", *port))
 }

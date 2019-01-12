@@ -1,8 +1,9 @@
 package main
 
 import (
-	"roomswap/core"
 	"strconv"
+
+	"github.com/kevba/swapmyroom/core"
 
 	"github.com/gin-gonic/gin"
 )
@@ -76,7 +77,7 @@ func (r *Room) FromData(d RoomData) {
 	r.PersonalSpaces = d.PersonalSpaces
 }
 
-func RoomRouter(r *gin.Engine, manager *core.Manager) {
+func RoomRouter(r *gin.RouterGroup, manager *core.Manager) {
 	router := r.Group("/room")
 
 	router.GET("/:id", dbManager(getRoom, manager))

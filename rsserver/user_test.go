@@ -7,11 +7,11 @@ import (
 	"log"
 	"net/http"
 	"net/http/httptest"
-	"roomswap/core"
 	"testing"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jmoiron/sqlx"
+	"github.com/kevba/swapmyroom/core"
 	"github.com/stretchr/testify/suite"
 )
 
@@ -36,11 +36,11 @@ func (s *UserSuite) SetupTest() {
 
 	gin.SetMode(gin.ReleaseMode)
 	s.router = gin.New()
-	UserRouter(s.router, m)
+	UserRouter(s.router.Group(""), m)
 }
 
-func (suite *UserSuite) TearDownTest() {
-	_ = suite.manager.DB().Close()
+func (s *UserSuite) TearDownTest() {
+	_ = s.manager.DB().Close()
 }
 
 func (s *UserSuite) RoomFixture() Room {

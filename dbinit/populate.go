@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
-	"roomswap/core"
+
+	"github.com/kevba/swapmyroom/core"
 
 	"github.com/jmoiron/sqlx"
 )

@@ -1,8 +1,9 @@
 package main
 
 import (
-	"roomswap/core"
 	"strconv"
+
+	"github.com/kevba/swapmyroom/core"
 
 	"github.com/gin-gonic/gin"
 )
@@ -65,11 +66,12 @@ type UserData struct {
 	LastName  string `json:"lastName" binding:"required"`
 }
 
-func UserRouter(r *gin.Engine, manager *core.Manager) {
+func UserRouter(r *gin.RouterGroup, manager *core.Manager) {
 	router := r.Group("/user")
 
 	router.GET("/:id", dbManager(userMW(getUser), manager))
 	router.GET("/:id/rooms", dbManager(userMW(getUserRooms), manager))
+
 	router.POST("/", dbManager(postUser, manager))
 	router.POST("/:id/room", dbManager(userMW(postUserRoom), manager))
 }

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"roomswap/core"
+	"github.com/kevba/swapmyroom/core"
 
 	"github.com/gin-gonic/gin"
 )
