@@ -34,5 +34,6 @@ func main() {
 	RoomRouter(router, m)
 	UserRoomRouter(router, m)
 
+	log.Printf("starting server on: %v", *port)
 	engine.Run(fmt.Sprintf(":%v", *port))
 }

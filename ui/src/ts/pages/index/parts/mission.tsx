@@ -7,15 +7,19 @@ export class MissionPart extends React.Component {
     render() {
         return (
             <>
-                <PartHeader title={"Our mission"} />
+                <PartHeader title={"Missie & Visie"} />
                 <PartBody>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum.
+                    Onze missie is om studenten die al op kamers wonen de mogelijkheid
+                    geven om door te groeien naar een kamer die bij hun wensen en behoeften past.
+                    Wij willen dit proces zo eenvoudig mogelijk maken, zodat de verhuizing soepel
+                    verloopt voor zowel de studenten als de pandeigenaren.
+                    <br />
+                    <br />
+                    Onze visie is om de beschikbaarheid van studentenhuisvesting
+                    in Groningen te vergroten. Dit willen wij doen door de doorstroming
+                    van de studenten te vergemakkelijken en te versnellen. Wij willen af van
+                    de eeuwige wachtrijen en het huren van een kamer die niet bij je past omdat
+                    je anders niks kan krijgen.
                 </PartBody>
             </>
         )

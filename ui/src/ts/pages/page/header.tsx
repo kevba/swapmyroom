@@ -9,6 +9,8 @@ import {map} from 'lodash';
 import Typography from '@material-ui/core/Typography';
 import { withStyles, createStyles, Theme } from '@material-ui/core/styles';
 
+const logo = '/images/logo.svg';
+
 export interface INavButton  {
     href: string
     text: string
@@ -36,6 +38,13 @@ const styles = ({ }: Theme) => createStyles({
         flexGrow: 1,
     },
 
+    logo: {
+        paddingLeft: "5px",
+        paddingRight: "8px",
+        width: "70px",
+        height: "70px",
+    },
+
     navButtons: {
         "& > *": {
             marginRight: "5px"
@@ -55,6 +64,7 @@ class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDiv
             <div className={`${classes.root} ${this.props.className}`}>
                 <AppBar position="static" className={classes.appBar}>
                     <Toolbar>
+                        <img className={classes.logo} src={logo} />
                         <Typography variant="h4" color="inherit" className={classes.title}>
                             Swap My Room
                         </Typography>

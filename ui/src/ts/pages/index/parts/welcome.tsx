@@ -21,7 +21,6 @@ const styles = () => createStyles({
         width: "100%",
         height: "auto",
     }
-
 })
 
 interface IWelcomePart {

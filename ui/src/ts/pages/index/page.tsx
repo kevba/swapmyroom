@@ -3,9 +3,11 @@ import * as React from 'react';
 
 import Page from '../page/page';
 
-import Welcome from './parts/welcome'
+// import Welcome from './parts/welcome'
 import About from './parts/about'
+import Organisation from './parts/organisation'
 import Mission from './parts/mission'
+import Lander from './parts/lander'
 import Form from './parts/form'
 
 interface IIndexPageProps {}
@@ -19,9 +21,10 @@ export class IndexPage extends React.Component<IIndexPageProps> {
 
         return (
             <Page navButtons={navButtons}>
-                <Welcome />
+                <Lander />
                 <About />
                 <Mission />
+                <Organisation />
                 <Form />
             </Page>
         );

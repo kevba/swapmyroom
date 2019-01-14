@@ -1,6 +1,5 @@
 html {
     scroll-behavior: smooth;
-
 }
 
 html, body {
@@ -11,6 +10,7 @@ html, body {
 
 body {
     font-family: sans-serif;
+    font-size: large;
 }
 
 html, body, #app {

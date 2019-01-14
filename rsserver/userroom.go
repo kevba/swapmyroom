@@ -46,5 +46,8 @@ func postUserAndRoom(c *gin.Context, manager *core.Manager) {
 		return
 	}
 
-	c.JSON(200, r.ToData())
+	c.JSON(200, dataStruct{
+		u.ToData(),
+		r.ToData(),
+	})
 }

@@ -1,25 +1,69 @@
 import * as React from 'react';
 
+import { withStyles, createStyles } from '@material-ui/core/styles';
+
 import PartHeader from './part/partHeader'
 import PartBody from './part/partBody'
 
-export class AboutPart extends React.Component {
+
+const styles = () => createStyles({
+    body: {
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-between"
+    },
+
+    infoBox: {
+        margin: "10px",
+        padding: "10px",
+        flexGrow: 1,
+        width: "300px",
+        borderStyle: "solid",
+        borderWidth: "5px 0"
+    },
+})
+
+interface IAboutPart {
+    classes: any;
+}
+
+export class AboutPart extends React.Component<IAboutPart> {
     render() {
+        let {classes} = this.props
         return (
             <>
-                <PartHeader title={"About us"} />
                 <PartBody>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                    nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                    in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                    Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                    mollit anim id est laborum.
+                    <PartHeader title={"Wie zijn wij?"} />
+                    <div className={classes.body}>
+                        <div className={classes.infoBox}>
+                            <div><b>Robin Johnson</b></div>
+                            <br />
+                            <div>
+                                Oprichter & eigenaar
+                                <br />
+                                Ik doe op dit moment nog de studie Industrieel
+                                product design. Ik zet mijn kennis in om SwapMyRoom optimaal
+                                te maken op gebied van user-interface en interactie.
+                            </div>
+                        </div>
+                        <div className={classes.infoBox}>
+                            <div><b>Martin Batema</b></div>
+                            <br />
+                            <div>
+                                Oprichter & eigenaar
+                                <br />
+                                <br />
+                                Ik ben op dit moment bezig met de opleding Commerciële economie.
+                                Ik zorg er voor dat er zo veel mogelijk studenten
+                                zich bij SwapMyRoom aanmelden zodat jij sneller
+                                jouw perfecte kamer vindt.
+                            </div>
+                        </div>
+                    </div>
                 </PartBody>
             </>
         )
     }
 }
 
-export default AboutPart
+export default withStyles(styles)(AboutPart);

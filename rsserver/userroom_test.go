@@ -111,11 +111,6 @@ func (s *UserRoomSuite) TestPostUserAndRoom() {
 			UserData{0, "jan@test.com", "jan", "jansen"},
 			422,
 		},
-		{
-			RoomData{},
-			UserData{0, "jan@test.com", "jan", "jansen"},
-			404,
-		},
 	}
 
 	for _, test := range tests {
@@ -134,7 +129,7 @@ func (s *UserRoomSuite) TestPostUserAndRoom() {
 				User UserData `json:"user" binding:"required"`
 				Room RoomData `json:"room" binding:"required"`
 			}
-			resData := dataStruct{}
+			resData := &dataStruct{}
 			err := json.Unmarshal(w.Body.Bytes(), resData)
 			s.Nil(err, fmt.Sprintf("could not unmarshal response: %v", err))
 
@@ -144,9 +139,8 @@ func (s *UserRoomSuite) TestPostUserAndRoom() {
 			s.Equal(test.udata.LastName, resData.User.LastName)
 
 			s.NotEqual(0, resData.Room.ID)
+			s.Equal(resData.User.ID, resData.Room.UserID)
 
-			s.Equal(test.rdata.ID, resData.Room.ID)
-			s.Equal(test.rdata.UserID, resData.Room.UserID)
 			s.Equal(test.rdata.Size, resData.Room.Size)
 			s.Equal(test.rdata.FlatMates, resData.Room.FlatMates)
 			s.Equal(test.rdata.Rent, resData.Room.Rent)

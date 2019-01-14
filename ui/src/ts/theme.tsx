@@ -12,9 +12,9 @@ const theme = createMuiTheme({
   },
   palette: {
     primary: {
-        light: indigo[500],
-        main: indigo[700],
-        dark: indigo[900],
+        light: indigo[300],
+        main: indigo[500],
+        dark: indigo[700],
     },
     secondary: amber,
     error: red,

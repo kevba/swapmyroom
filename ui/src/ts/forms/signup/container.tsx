@@ -42,8 +42,9 @@ export class Container extends React.Component {
 
     render() {
         return (
-            <Form
-                onSubmit={(data: any) => this.handleSubmit(data)}/>
+            <Form onSubmit={(data: any) => this.handleSubmit(data)}/>
         )
     }
 }
+
+export default Container
