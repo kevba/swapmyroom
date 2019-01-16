@@ -29,9 +29,14 @@ const styles = ({ }: Theme) => createStyles({
     },
 
     appBar: {
+        position: 'absolute',
         paddingTop: "0.5em",
         paddingBottom: "0.5em",
         flexGrow: 1,
+    },
+
+    toolbar: {
+        display: "flex"
     },
 
     title: {
@@ -43,12 +48,6 @@ const styles = ({ }: Theme) => createStyles({
         paddingRight: "8px",
         width: "70px",
         height: "70px",
-    },
-
-    navButtons: {
-        "& > *": {
-            marginRight: "5px"
-        }
     }
 });
 
@@ -62,13 +61,13 @@ class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDiv
         let { classes } = this.props
         return (
             <div className={`${classes.root} ${this.props.className}`}>
-                <AppBar position="static" className={classes.appBar}>
-                    <Toolbar>
+                <AppBar position="absolute" className={classes.appBar}>
+                    <Toolbar className={classes.toolbar}>
                         <img className={classes.logo} src={logo} />
                         <Typography variant="h4" color="inherit" className={classes.title}>
                             Swap My Room
                         </Typography>
-                        <div className={classes.navButtons}>
+                        <div>
                             {this.renderNavButton()}
                         </div>
                     </Toolbar>

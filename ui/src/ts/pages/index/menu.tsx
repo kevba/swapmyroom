@@ -50,14 +50,23 @@ class NavMenu extends React.Component<IMenuProps, IMenuState> {
         <Menu
           id="nav-menu"
           anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={this.handleClose}>
-          <a href="#wie_zijn_wij?">
-              <MenuItem > Wie zijn wij? </MenuItem>
-          </a>
-          <MenuItem href="#missie_&_visie"> Missie & Visie </MenuItem>
-          <MenuItem href="#organisatie"> Organisatie </MenuItem>
-          <MenuItem href="#sign_up"> Sign up </MenuItem>
+            open={Boolean(anchorEl)}
+            onClose={this.handleClose}>
+            <a href="#missie_&_visie">
+                <MenuItem onClick={this.handleClose}> Missie & Visie </MenuItem>
+            </a>
+            <a href="#wie_zijn_wij?">
+                <MenuItem onClick={this.handleClose}> Wie zijn wij? </MenuItem>
+            </a>
+            <a href="#organisatie">
+                <MenuItem onClick={this.handleClose}> Organisatie </MenuItem>
+            </a>
+            <a href="#5-swappenplan">
+                <MenuItem onClick={this.handleClose}> 5-Swappenplan </MenuItem>
+            </a>
+            <a href="#meld_je_aan">
+                <MenuItem onClick={this.handleClose}> Meld je aan </MenuItem>
+            </a>
         </Menu>
       </div>
     );

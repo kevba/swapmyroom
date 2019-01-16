@@ -29,7 +29,7 @@ export class FormPart extends React.Component<IFormPartProps> {
     render() {
         return (
             <>
-                <PartHeader title={"Sign up"} />
+                <PartHeader title={"Meld je aan"} />
                 <PartBody className={this.props.classes.body}>
                     <div className={this.props.classes.form}>
                         <SignupForm />
