@@ -32,8 +32,8 @@ export class AboutPart extends React.Component<IAboutPart> {
         let {classes} = this.props
         return (
             <>
+                <PartHeader title={"Wie zijn wij?"} />
                 <PartBody>
-                    <PartHeader title={"Wie zijn wij?"} />
                     <div className={classes.body}>
                         <div className={classes.infoBox}>
                             <div><b>Robin Johnson</b></div>

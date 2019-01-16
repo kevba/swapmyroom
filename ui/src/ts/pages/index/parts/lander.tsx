@@ -7,15 +7,40 @@ import PartBody from './part/partBody'
 
 const styles = () => createStyles({
     body: {
-        padding: "5px",
-        opacity: 0,
-    },
-    button: {
+        background: "rgba(0, 0, 0, 0)",
+        padding: "10vh 0 12vh 0",
         display: "flex",
         justifyContent: "center",
+        alignItems: "center"
+    },
+
+    button: {
         height: "100%",
-        width: "100%",
-        opacity: 1
+        width: "22vw",
+        flex: 1,
+        fontSize: "1.5em",
+        fontWeight: 550,
+        padding: "1.3em"
+    },
+
+    button1: {
+        marginLeft: "30px",
+        marginRight: "15px",
+    },
+
+    button2: {
+        marginLeft: "15px",
+        marginRight: "30px",
+    },
+
+    '@media (max-width: 800px)': {
+        body: {
+            padding: "5vh 0 6vh 0",
+        },
+        button: {
+            width: "25vw",
+            fontSize: "0.9em"
+        },
     },
 })
 
@@ -27,9 +52,20 @@ export class WelcomePart extends React.Component<IWelcomePart>{
     render() {
         let {classes} = this.props
         return (
-            <PartBody className={classes.body}>
-                <Button className={classes.button}><h4> Ik wil Swappen! </h4></Button>
-            </PartBody>
+            <div className={classes.body}>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    className={`${classes.button} ${classes.button1}`}>
+                    Ik wil Swappen!
+                </Button>
+                <Button
+                    variant="contained"
+                    color="secondary"
+                    className={`${classes.button} ${classes.button2}`}>
+                    Hoe werkt het?
+                </Button>
+            </div>
         )
     }
 }

@@ -7,24 +7,23 @@ import Page from '../page/page';
 import About from './parts/about'
 import Organisation from './parts/organisation'
 import Mission from './parts/mission'
+import FiveSwapPlan from './parts/fiveSwapPlan'
 import Lander from './parts/lander'
 import Form from './parts/form'
+
+import NavMenu from './menu'
 
 interface IIndexPageProps {}
 
 export class IndexPage extends React.Component<IIndexPageProps> {
     render() {
-        let navButtons = [
-            {href: "#about_us", text: "About"},
-            {href: "#our_mission", text: "Our mission"}
-        ]
-
         return (
-            <Page navButtons={navButtons}>
+            <Page navButton={<NavMenu />}>
                 <Lander />
-                <About />
                 <Mission />
+                <About />
                 <Organisation />
+                <FiveSwapPlan />
                 <Form />
             </Page>
         );

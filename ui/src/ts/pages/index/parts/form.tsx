@@ -9,10 +9,15 @@ import PartBody from './part/partBody'
 
 
 const styles = () => createStyles({
+    body: {
+        display: "flex",
+        justifyContent: "center",
+    },
+
     form: {
         width: "100%",
         maxWidth: "30em",
-        display: "inline-block"
+        flexGrow: 1
     },
 })
 
@@ -25,15 +30,10 @@ export class FormPart extends React.Component<IFormPartProps> {
         return (
             <>
                 <PartHeader title={"Sign up"} />
-                <PartBody>
-                    Great! just a few things to fill in
-
-                    <div>
-                        <div className={this.props.classes.form}>
-                            <SignupForm />
-                        </div>
+                <PartBody className={this.props.classes.body}>
+                    <div className={this.props.classes.form}>
+                        <SignupForm />
                     </div>
-
                 </PartBody>
             </>
         )

@@ -4,8 +4,8 @@ import Paper from '@material-ui/core/Paper';
 
 const styles = () => createStyles({
     root: {
-        padding: "20px 20px 60px 20px",
         textAlign: "left",
+        padding: "25px 25px 60px 25px",
     },
 })
 
@@ -18,7 +18,7 @@ interface IPartBodyProps {
 export class PartBody extends React.Component<IPartBodyProps> {
     render() {
         return (
-            <Paper className={`${this.props.classes.root} ${this.props.className}`}>
+            <Paper className={`${this.props.classes.root} ${this.props.className} ${this.props.classes.content}`}>
                 {this.props.children}
             </Paper>
         )

@@ -54,7 +54,7 @@ const styles = ({ }: Theme) => createStyles({
 
 interface IHeaderProps {
     classes: any;
-    navButtons?: INavButton[];
+    navButton?: any;
 }
 
 class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDivElement>> {
@@ -69,7 +69,7 @@ class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDiv
                             Swap My Room
                         </Typography>
                         <div className={classes.navButtons}>
-                            {this.renderNavButtons()}
+                            {this.renderNavButton()}
                         </div>
                     </Toolbar>
                 </AppBar>
@@ -77,25 +77,12 @@ class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDiv
         )
     }
 
-    renderNavButtons() {
-        let {navButtons} = this.props
-        if (navButtons == undefined) {
+    renderNavButton() {
+        let {navButton} = this.props
+        if (navButton == undefined) {
             return
         }
-        return (
-            <>
-                {
-                    map(navButtons, (b)  => (
-                        <Button
-                            href={b.href}
-                            color={b.color || "secondary"}
-                            variant={b.variant || "outlined" }>
-                            {b.text}
-                        </Button>
-                    ))
-                }
-            </>
-        )
+        return navButton
     }
 }
 

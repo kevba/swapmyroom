@@ -7,8 +7,8 @@ export class MissionPart extends React.Component {
     render() {
         return (
             <>
-                <PartHeader title={"Missie & Visie"} />
                 <PartBody>
+                    <PartHeader title={"Missie & Visie"} />
                     Onze missie is om studenten die al op kamers wonen de mogelijkheid
                     geven om door te groeien naar een kamer die bij hun wensen en behoeften past.
                     Wij willen dit proces zo eenvoudig mogelijk maken, zodat de verhuizing soepel

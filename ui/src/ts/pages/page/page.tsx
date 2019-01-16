@@ -65,19 +65,19 @@ interface IPageProps {
     classes: any;
     children: any[];
     backgroundImg?: string;
-    navButtons: INavButton[];
+    navButton?: any;
 }
 
 class Page extends React.Component<IPageProps> {
     static defaultProps = {
-        navButtons: new Array<INavButton>(),
+        navButton: new Array<INavButton>(),
     };
 
     render() {
         return (
             <>
                 <div className={this.props.classes.page}>
-                    <Header className={this.props.classes.header} navButtons={this.props.navButtons} />
+                    <Header className={this.props.classes.header} navButton={this.props.navButton} />
                     <BackgroundImage imagePath={this.props.backgroundImg} />
                     <div className={this.props.classes.contentClass}>
                         {
