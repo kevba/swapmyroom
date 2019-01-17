@@ -37,9 +37,9 @@ export class AboutPart extends React.Component<IAboutPart> {
                     <div className={classes.body}>
                         <div className={classes.infoBox}>
                             <div><b>Robin Johnson</b></div>
+                            <i>Oprichter & eigenaar</i>
                             <br />
                             <div>
-                                Oprichter & eigenaar
                                 <br />
                                 Ik doe op dit moment nog de studie Industrieel
                                 product design. Ik zet mijn kennis in om SwapMyRoom optimaal
@@ -48,10 +48,9 @@ export class AboutPart extends React.Component<IAboutPart> {
                         </div>
                         <div className={classes.infoBox}>
                             <div><b>Martin Batema</b></div>
+                            <i>Oprichter & eigenaar</i>
                             <br />
                             <div>
-                                Oprichter & eigenaar
-                                <br />
                                 <br />
                                 Ik ben op dit moment bezig met de opleding Commerciële economie.
                                 Ik zorg er voor dat er zo veel mogelijk studenten

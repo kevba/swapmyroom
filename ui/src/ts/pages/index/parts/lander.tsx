@@ -54,12 +54,14 @@ export class WelcomePart extends React.Component<IWelcomePart>{
         return (
             <div className={classes.body}>
                 <Button
+                    href="#meld_je_aan"
                     variant="contained"
                     color="secondary"
                     className={`${classes.button} ${classes.button1}`}>
                     Ik wil Swappen!
                 </Button>
                 <Button
+                    href="#5-swappenplan"
                     variant="contained"
                     color="secondary"
                     className={`${classes.button} ${classes.button2}`}>

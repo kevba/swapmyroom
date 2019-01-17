@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import {withStyles, createStyles, Theme} from '@material-ui/core/styles';
 
 import Page from '../page/page';
 
@@ -16,7 +17,16 @@ import MenuItem from '@material-ui/core/MenuItem';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-interface IMenuProps {}
+
+const styles = ({palette}: Theme) => createStyles({
+  menuButton: {
+    color: palette.grey[50],
+  },
+});
+
+interface IMenuProps {
+    classes: any
+}
 
 interface IMenuState {
     anchorEl?: any
@@ -44,12 +54,14 @@ class NavMenu extends React.Component<IMenuProps, IMenuState> {
     return (
       <div>
         <IconButton
+            className={this.props.classes.menuButton}
             onClick={this.handleClick}>
             <MenuIcon />
         </IconButton>
         <Menu
-          id="nav-menu"
-          anchorEl={anchorEl}
+            id="nav-menu"
+            color="primary"
+            anchorEl={anchorEl}
             open={Boolean(anchorEl)}
             onClose={this.handleClose}>
             <a href="#missie_&_visie">
@@ -73,4 +85,4 @@ class NavMenu extends React.Component<IMenuProps, IMenuState> {
   }
 }
 
-export default NavMenu;
+export default withStyles(styles)(NavMenu);

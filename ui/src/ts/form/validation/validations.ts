@@ -4,7 +4,7 @@ export type Validator = (val: any) => {
 }
 
 export const required = () => {
-    let text = 'This field is required';
+    let text = 'Dit veld is verplicht';
 
     let vfunc: Validator = (value: any) => {
         if (value === '' || value === undefined || value === null) {
@@ -56,8 +56,23 @@ export const ipAddress = () => {
     return vfunc
 };
 
+export const postalCode = () => {
+    let pattern = /^[1-9][0-9]{3} ?(?!sa|sd|ss)[a-z]{2}$/i;
+    let text = 'Geen geldige postcode';
+
+    let vfunc: Validator = (value: any) => {
+        if (!pattern.test(value)) {
+            return {valid: false, text: text};
+        }
+        return {valid: true, text: ''};
+    };
+
+    return vfunc
+};
+
+
 export const integer = () => {
-    let text = 'Must be a whole number';
+    let text = 'Moet een afgerond getal zijn';
 
     let vfunc: Validator = (value: any) => {
         if (!isNaN(value) && Number(value) % 1 === 0) {
@@ -70,7 +85,7 @@ export const integer = () => {
 };
 
 export const email = () => {
-    let text = 'Not a valid email address';
+    let text = 'Dit emailadres is incorrect';
 
     let vfunc: Validator = (value: any) => {
         var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;

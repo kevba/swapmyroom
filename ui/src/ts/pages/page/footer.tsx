@@ -8,6 +8,19 @@ const styles = ({palette}: Theme) => createStyles({
     color: palette.grey[400],
     padding: "1em 5em 2em",
   },
+
+  logoWrapper: {
+      display: "flex",
+      alignItems: "center",
+  },
+  logo: {
+      marginLeft: "5px",
+      flexGrow: 0
+  },
+  link: {
+      textDecoration: "underline",
+      flexGrow: 1
+  },
 });
 
 interface IFooterProps {
@@ -16,12 +29,18 @@ interface IFooterProps {
 
 class Footer extends React.Component<IFooterProps & React.HTMLAttributes<HTMLDivElement>> {
     render() {
+        let {classes} = this.props
         return (
             <div className={`${this.props.classes.root} ${this.props.className}`}>
-                This footer is a demo
                 <br />
+                <h4> Contact </h4>
+                    <div className={classes.logoWrapper}>
+                        Vind ons op&nbsp;<a className={classes.link} href="https://www.facebook.com/swapmyroom"> Facebook</a>
+                    </div>
+                    <div className={classes.logoWrapper}>
+                        Vind ons op&nbsp;<a className={classes.link} href="https://www.instagram.com/swapmyroom.nl"> Instagram</a>
+                    </div>
                 <br />
-                Make by Kevba
             </div>
         )
     }

@@ -7,7 +7,7 @@ const styles = () => createStyles({
     },
     anchor: {
         position: "absolute",
-        marginTop: "-20vh",
+        marginTop: "-25vh",
         visibility: "hidden",
         display: "block",
     }

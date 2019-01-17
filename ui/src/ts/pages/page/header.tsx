@@ -28,13 +28,6 @@ const styles = ({ }: Theme) => createStyles({
         flexGrow: 1,
     },
 
-    appBar: {
-        position: 'absolute',
-        paddingTop: "0.5em",
-        paddingBottom: "0.5em",
-        flexGrow: 1,
-    },
-
     toolbar: {
         display: "flex"
     },
@@ -61,7 +54,7 @@ class Header extends React.Component<IHeaderProps & React.HTMLAttributes<HTMLDiv
         let { classes } = this.props
         return (
             <div className={`${classes.root} ${this.props.className}`}>
-                <AppBar position="absolute" className={classes.appBar}>
+                <AppBar position="sticky">
                     <Toolbar className={classes.toolbar}>
                         <img className={classes.logo} src={logo} />
                         <Typography variant="h4" color="inherit" className={classes.title}>

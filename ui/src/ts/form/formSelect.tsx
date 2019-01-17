@@ -1,10 +1,13 @@
 import * as React from 'react';
 
-import BaseInput from '../forms/baseInput';
-import Select from 'material-ui/Select';
+import Select from '@material-ui/core/Select';
+import InputLabel from '@material-ui/core/InputLabel';
+
+import { BaseInput, IBaseInputProps, IBaseInputState } from './baseInput';
 
 interface IFormSelectProps extends IBaseInputProps{
-    label: string
+    label?: string
+    className?: string
 }
 
 interface IFormSelectState extends IBaseInputState {}
@@ -15,13 +18,15 @@ class FormSelect extends BaseInput<IFormSelectProps, IFormSelectState> {
         let {value} = this.state;
 
         return (
-            <div style={{paddingTop: '1em', paddingBottom: '1em'}}>
+            <div
+                className={this.props.className} 
+                style={{paddingTop: '1em', paddingBottom: '1em'}}>
+                <InputLabel>{label}</InputLabel>
                 <Select
                     id={id}
                     fullWidth
                     value={value}
-                    onChange={e => this.handleChange(e.target.value)}
-                    label={label}
+                    onChange={(e: any) => this.handleChange(e.target.value)}
                     autoWidth>
                     {this.props.children}
                 </Select>
