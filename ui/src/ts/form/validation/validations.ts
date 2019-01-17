@@ -61,7 +61,7 @@ export const postalCode = () => {
     let text = 'Geen geldige postcode';
 
     let vfunc: Validator = (value: any) => {
-        if (!pattern.test(value)) {
+        if (value != "" && !pattern.test(value)) {
             return {valid: false, text: text};
         }
         return {valid: true, text: ''};

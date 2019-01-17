@@ -186,7 +186,7 @@ export class FormStepper extends React.Component<IFormStepperProps, IFormStepper
 
                         <FormSelect
                             className={this.state.activeStep !== 0 ? classes.hiddenContent : ""}
-                            id="landlord"
+                            id="want_landlord"
                             label="Voorkeur soort verhuurder"
                             defaultValue={"huisbaas"}
                             rules={[required()]} >
